@@ -55,3 +55,20 @@
 #' Darsie, R.F., Jr., and R.A. Ward. 1989. Review of new Nearctic mosquito distributional records north of Mexico,
 #' with notes on additions and taxonomic changes of the fauna, 1982-89. J. Am. Mosq. Control Assoc. 5:552-557
 'mosquito.ranges'
+
+#' US Quarterly GRIDMET data
+#'
+#' Data from the GRIDMET project, downloaded from Google Earth Engine daily by county using the
+#' GRIDMET Viewer and Downloader Version 1.1 tool in the ArboMAP package (www.github.com/ecograph/ArboMAP).
+#' Converted to quarterly data using the RF1 package tool convert.env.data tool designed to take data
+#' from the ArboMAP daily format and put it into the RF1 input format.
+#' convert.env.data is not currently an exported function, but it can be accessed with rf1:::convert.env.data
+#' Currently does not include the anomaly data
+#'
+#' Note that the saved R object name is 'us.quarterly' and not 'us_quarter1_gridmet', the .rda file name.
+#'
+#' @docType data
+#'
+#' @source \url{https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET}
+#'
+'us_quarter1_gridmet'
