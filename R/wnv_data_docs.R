@@ -71,4 +71,5 @@
 #'
 #' @source \url{https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET}
 #'
-'us_quarter1_gridmet'
+'us.quarterly'
+
