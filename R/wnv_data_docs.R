@@ -76,17 +76,3 @@
 #'
 'us.quarterly'
 
-us.quarterly = patch.county(us.quarterly, "Maryland-Baltimore City", "Maryland-Baltimore")
-us.quarterly = patch.county(us.quarterly, "Virginia-Fairfax City", "Virginia-Fairfax")
-us.quarterly = patch.county(us.quarterly, "Virginia-Roanoke City", "Virginia-Roanoke")
-us.quarterly = patch.county(us.quarterly, "Missouri-St. Louis", "Missouri-St. Louis City")
-
-
-us.quarterly$location_year = gsub("Virginia-Franklin City", "Virginia-Franklin", us.quarterly$location_year) # Revert to original name - this was 'corrected' above, but was an error
-us.quarterly$location = gsub("Virginia-Franklin City", "Virginia-Franklin", us.quarterly$location) # Revert to original name - this was 'corrected' above, but was an error
-us.quarterly = patch.county(us.quarterly, "Virginia-Southampton", "Virginia-Franklin City") # Franklin City is not in Franklin County, nearest county is Southhampton.
-
-us.quarterly$location_year = gsub("Virginia-Richmond City", "Virginia-Richmond", us.quarterly$location_year) # Revert to original name - this was 'corrected' above, but was an error
-us.quarterly$location = gsub("Virginia-Richmond City", "Virginia-Richmond", us.quarterly$location) # Revert to original name - this was 'corrected' above, but was an error
-us.quarterly = patch.county(us.quarterly, "Virginia-Henrico", "Virginia-Richmond City") #  Nearest county is Henrico.
-
