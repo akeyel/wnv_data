@@ -64,12 +64,29 @@
 #' from the ArboMAP daily format and put it into the RF1 input format.
 #' convert.env.data is not currently an exported function, but it can be accessed with rf1:::convert.env.data
 #' Currently does not include the anomaly data
-#'
-#' Note that the saved R object name is 'us.quarterly' and not 'us_quarter1_gridmet', the .rda file name.
+#' 
+#' NOTE: Six counties had missing data in the final data product, and values were substituted from nearby counties:
+#' Baltimore City uses data from Baltimore County, Fairfax City uses data from Fairfax County, Roanoke City uses
+#' data from Roanoke County, St. Louis City uses data from St. Louis County, Franklin City uses data from Southampton County,
+#' and Richmond City uses data from Henrico County.
 #'
 #' @docType data
 #'
 #' @source \url{https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET}
 #'
 'us.quarterly'
+
+us.quarterly = patch.county(us.quarterly, "Maryland-Baltimore City", "Maryland-Baltimore")
+us.quarterly = patch.county(us.quarterly, "Virginia-Fairfax City", "Virginia-Fairfax")
+us.quarterly = patch.county(us.quarterly, "Virginia-Roanoke City", "Virginia-Roanoke")
+us.quarterly = patch.county(us.quarterly, "Missouri-St. Louis", "Missouri-St. Louis City")
+
+
+us.quarterly$location_year = gsub("Virginia-Franklin City", "Virginia-Franklin", us.quarterly$location_year) # Revert to original name - this was 'corrected' above, but was an error
+us.quarterly$location = gsub("Virginia-Franklin City", "Virginia-Franklin", us.quarterly$location) # Revert to original name - this was 'corrected' above, but was an error
+us.quarterly = patch.county(us.quarterly, "Virginia-Southampton", "Virginia-Franklin City") # Franklin City is not in Franklin County, nearest county is Southhampton.
+
+us.quarterly$location_year = gsub("Virginia-Richmond City", "Virginia-Richmond", us.quarterly$location_year) # Revert to original name - this was 'corrected' above, but was an error
+us.quarterly$location = gsub("Virginia-Richmond City", "Virginia-Richmond", us.quarterly$location) # Revert to original name - this was 'corrected' above, but was an error
+us.quarterly = patch.county(us.quarterly, "Virginia-Henrico", "Virginia-Richmond City") #  Nearest county is Henrico.
 
